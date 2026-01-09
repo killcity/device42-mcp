@@ -1,0 +1,29 @@
+{
+  "name": "device42-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for Device42 IT asset management",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "device42-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x dist/index.js",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "undici": "^6.0.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.4.0"
+  }
+}
