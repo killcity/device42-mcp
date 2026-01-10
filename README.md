@@ -17,7 +17,7 @@ MCP server for Device42 IT asset management - Node.js/TypeScript implementation.
 
 No installation required. Just add to your MCP client config:
 
-### Cursor
+### Cursor (npx)
 
 Add to `~/.cursor/mcp.json`:
 
@@ -39,7 +39,30 @@ Add to `~/.cursor/mcp.json`:
 }
 ```
 
-### Claude Desktop
+### Cursor (Docker)
+
+Add to `~/.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "device42": {
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm",
+        "-e", "D42_URL=https://your-device42.com",
+        "-e", "D42_USERNAME=api-user",
+        "-e", "D42_PASSWORD=api-password",
+        "-e", "D42_VERIFY_SSL=true",
+        "-e", "D42_READONLY=true",
+        "killcity/device42-mcp:latest"
+      ]
+    }
+  }
+}
+```
+
+### Claude Desktop (npx)
 
 Add to `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
 
@@ -56,6 +79,29 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS)
         "D42_VERIFY_SSL": "true",
         "D42_READONLY": "true"
       }
+    }
+  }
+}
+```
+
+### Claude Desktop (Docker)
+
+Add to `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
+
+```json
+{
+  "mcpServers": {
+    "device42": {
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm",
+        "-e", "D42_URL=https://your-device42.com",
+        "-e", "D42_USERNAME=api-user",
+        "-e", "D42_PASSWORD=api-password",
+        "-e", "D42_VERIFY_SSL=true",
+        "-e", "D42_READONLY=true",
+        "killcity/device42-mcp:latest"
+      ]
     }
   }
 }
@@ -80,7 +126,7 @@ npm run build
 node dist/index.js
 ```
 
-### Docker
+### Docker (standalone)
 
 ```bash
 docker pull killcity/device42-mcp:latest
