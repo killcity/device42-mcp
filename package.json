@@ -2,11 +2,34 @@
   "name": "device42-mcp",
   "version": "0.1.0",
   "description": "MCP server for Device42 IT asset management",
+  "author": "killcity",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/killcity/device42-mcp.git"
+  },
+  "homepage": "https://github.com/killcity/device42-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/killcity/device42-mcp/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "device42",
+    "dcim",
+    "it-asset-management",
+    "cmdb",
+    "cursor",
+    "claude"
+  ],
   "type": "module",
   "main": "dist/index.js",
   "bin": {
     "device42-mcp": "dist/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc && chmod +x dist/index.js",
     "start": "node dist/index.js",
