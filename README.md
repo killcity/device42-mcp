@@ -1,24 +1,22 @@
-# Device42 MCP Server (Node.js)
+# Device42 MCP Server
+
+[![npm version](https://img.shields.io/npm/v/device42-mcp.svg)](https://www.npmjs.com/package/device42-mcp)
 
 MCP server for Device42 IT asset management - Node.js/TypeScript implementation.
 
 ## Features
 
+- **Zero install**: Run directly with `npx device42-mcp`
 - **Fast**: Uses native `fetch` (Node 18+), no heavy HTTP libs
 - **Type-safe**: Full TypeScript
 - **Minimal deps**: Only `@modelcontextprotocol/sdk` and `zod`
 - **Read/Write modes**: Set `D42_READONLY=false` to enable write operations
 
-## Installation
+## Quick Start
 
-```bash
-npm install
-npm run build
-```
+No installation required. Just add to your MCP client config:
 
-## Usage
-
-### With Cursor
+### Cursor
 
 Add to `~/.cursor/mcp.json`:
 
@@ -26,8 +24,8 @@ Add to `~/.cursor/mcp.json`:
 {
   "mcpServers": {
     "device42": {
-      "command": "node",
-      "args": ["/path/to/device42-mcp/dist/index.js"],
+      "command": "npx",
+      "args": ["-y", "device42-mcp"],
       "env": {
         "D42_URL": "https://your-device42.com",
         "D42_USERNAME": "api-user",
@@ -40,7 +38,48 @@ Add to `~/.cursor/mcp.json`:
 }
 ```
 
-### With Docker
+### Claude Desktop
+
+Add to `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
+
+```json
+{
+  "mcpServers": {
+    "device42": {
+      "command": "npx",
+      "args": ["-y", "device42-mcp"],
+      "env": {
+        "D42_URL": "https://your-device42.com",
+        "D42_USERNAME": "api-user",
+        "D42_PASSWORD": "api-password",
+        "D42_VERIFY_SSL": "true",
+        "D42_READONLY": "true"
+      }
+    }
+  }
+}
+```
+
+## Alternative Installation Methods
+
+### Global Install
+
+```bash
+npm install -g device42-mcp
+device42-mcp
+```
+
+### From Source
+
+```bash
+git clone https://github.com/killcity/device42-mcp.git
+cd device42-mcp
+npm install
+npm run build
+node dist/index.js
+```
+
+### Docker
 
 ```bash
 docker build -t device42-mcp:latest .
@@ -86,12 +125,16 @@ docker run -i --rm \
 ## Development
 
 ```bash
-# Run in dev mode (tsx)
+# Run in dev mode
 npm run dev
-
-# Type check
-npm run typecheck
 
 # Build
 npm run build
+
+# Run built version
+npm start
 ```
+
+## License
+
+MIT
