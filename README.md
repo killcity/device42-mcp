@@ -1,7 +1,7 @@
 # Device42 MCP Server
 
 [![npm version](https://img.shields.io/npm/v/device42-mcp.svg)](https://www.npmjs.com/package/device42-mcp)
-[![Docker Image](https://img.shields.io/docker/v/killcity/device42-mcp?label=docker)](https://hub.docker.com/r/killcity/device42-mcp)
+[![Docker Pulls](https://img.shields.io/docker/pulls/killcity/device42-mcp)](https://hub.docker.com/r/killcity/device42-mcp)
 
 MCP server for Device42 IT asset management - Node.js/TypeScript implementation.
 
