@@ -1,6 +1,7 @@
 # Device42 MCP Server
 
 [![npm version](https://img.shields.io/npm/v/device42-mcp.svg)](https://www.npmjs.com/package/device42-mcp)
+[![Docker Image](https://img.shields.io/docker/v/killcity/device42-mcp?label=docker)](https://hub.docker.com/r/killcity/device42-mcp)
 
 MCP server for Device42 IT asset management - Node.js/TypeScript implementation.
 
@@ -82,13 +83,21 @@ node dist/index.js
 ### Docker
 
 ```bash
-docker build -t device42-mcp:latest .
+docker pull killcity/device42-mcp:latest
 
 docker run -i --rm \
   -e D42_URL="https://your-device42.com" \
   -e D42_USERNAME="user" \
   -e D42_PASSWORD="pass" \
-  device42-mcp:latest
+  -e D42_VERIFY_SSL="true" \
+  -e D42_READONLY="true" \
+  killcity/device42-mcp:latest
+```
+
+Or build locally:
+
+```bash
+docker build -t device42-mcp:latest .
 ```
 
 ## Environment Variables
